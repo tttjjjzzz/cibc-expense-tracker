@@ -1,0 +1,8 @@
+ofxparse>=0.21
+pandas>=2.0
+streamlit>=1.35
+altair>=5.0
+click>=8.1
+watchdog>=4.0
+pytest>=8.0
+python-dotenv>=1.0
