@@ -199,6 +199,17 @@ def upsert_budget(name: str, budget_limit) -> None:
         )
 
 
+def get_latest_transaction_month() -> tuple:
+    """Return (year, month) of the most recent transaction, or today if no data."""
+    with get_connection() as conn:
+        row = conn.execute("SELECT MAX(date) AS d FROM transactions").fetchone()
+    if row and row["d"]:
+        d = date.fromisoformat(row["d"])
+        return d.year, d.month
+    today = date.today()
+    return today.year, today.month
+
+
 def get_budget_vs_actual(year: int, month: int) -> List[dict]:
     """Per-category actual spend vs budget limit for a given month."""
     with get_connection() as conn:

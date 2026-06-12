@@ -24,13 +24,14 @@ def _get_income(year: int, month: int) -> float:
 def render():
     st.title("Overview")
 
-    # Month / year selector
+    # Month / year selector — defaults to the most recent month with data
+    default_year, default_month = database.get_latest_transaction_month()
     today = date.today()
     col_y, col_m, _ = st.columns([1, 1, 4])
     year = col_y.number_input("Year", min_value=2000, max_value=today.year + 1,
-                               value=today.year, step=1, key="ov_year")
+                               value=default_year, step=1, key="ov_year")
     month = col_m.number_input("Month", min_value=1, max_value=12,
-                                value=today.month, step=1, key="ov_month")
+                                value=default_month, step=1, key="ov_month")
     year, month = int(year), int(month)
 
     st.divider()

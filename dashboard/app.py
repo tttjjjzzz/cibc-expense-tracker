@@ -29,11 +29,11 @@ with st.sidebar:
     st.caption("Data stored locally in ~/.cibc-tracker/expenses.db")
 
 if page == "Overview":
-    from dashboard.pages.overview import render
+    from dashboard._pages.overview import render
     render()
 elif page == "Transactions":
-    from dashboard.pages.transactions import render
+    from dashboard._pages.transactions import render
     render()
 elif page == "Budgets":
-    from dashboard.pages.budgets import render
+    from dashboard._pages.budgets import render
     render()
